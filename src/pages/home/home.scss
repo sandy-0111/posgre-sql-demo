@@ -1,0 +1,16 @@
+$myval : red;
+
+h1 {
+    color : $myval;
+    margin-top: 15px !important  
+}
+
+@mixin center-element {
+    display: flex;
+}
+
+.ctr{
+    @include center-element;
+    margin-top:  20px;
+    
+}
