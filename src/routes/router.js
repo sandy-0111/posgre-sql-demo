@@ -5,7 +5,8 @@ const Home = lazy(()=> import("../pages/home"))
 const AboutUs = lazy(()=> import("../pages/about-us"))
 
 export const router = [
-    {
+
+        {
         id : 'home',
         path : '/',
         isPublic : true,

@@ -7,8 +7,8 @@ h1 {
 
 @mixin center-element {
     display: flex;
-    // justify-content: center;
-    // align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .ctr{
@@ -38,8 +38,8 @@ h1 {
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
+        
       }
-      
       /* Change the link color to #111 (black) on hover */
       li a:hover {
         background-color: #111;
@@ -82,17 +82,24 @@ h1 {
 }
 
 .dataTable {
-    width: 80%;
+    width: 60%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-    
+  
   table {
     border: 2px solid forestgreen;
-    width: 800px;
-    height: 200px;
+    // width: 550px;
+    // height: 100px;
+    margin-left: 50px ;
+    scroll-behavior: smooth;
+    overflow: auto;
+    
+    .delete-btn{
+      cursor: pointer;
+    }
   }
     
   th {

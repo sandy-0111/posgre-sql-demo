@@ -1,10 +1,10 @@
 const userPayload = (payload) => {
-    const { firstName, lastName, email } = payload
+    const { user_firstname, user_lastname, user_email } = payload
 
     const _payload = {
-        "user_firstname": firstName,
-        "user_lastname": lastName,
-        "user_email": email
+        user_firstname,
+        user_lastname,
+        user_email
     }
     return _payload;
 }
