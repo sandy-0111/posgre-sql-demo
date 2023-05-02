@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import axios from 'axios'
 import { Field, Form, Formik, } from 'formik'
 import { userPayload } from '../../utils/generate-payload'
@@ -12,7 +12,7 @@ const Home = () => {
   const { userId } = useParams();
   const mainFormRef = useRef(null);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = useCallback(async (values) => {
     const payload = userPayload(values);
     try {
       const result = await axios.post('http://localhost:4000/user',
@@ -29,9 +29,9 @@ const Home = () => {
     } catch (error) {
       console.log('error: ', error);
     }
-  }
+  }, [])
 
-  const handleDelete = (userId) => async (e) => {
+  const handleDelete = useCallback((userId) => async (e) => {
     try {
       const result = await axios.delete(`http://localhost:4000/user/${userId}`)
 
@@ -44,9 +44,9 @@ const Home = () => {
     } catch (error) {
       console.log('error: ', error);
     }
-  }
+  }, [])
 
-  const fetchDetail = (userId) => async (e) => {
+  const fetchDetail = useCallback((userId) => async (e) => {
 
     searchParams.set('userId', userId)
     setSearchParams(searchParams);
@@ -61,9 +61,9 @@ const Home = () => {
     } catch (error) {
       console.log('error: ', error);
     }
-  }
+  }, [])
 
-  const handleUpdate = async (e) => {
+  const handleUpdate = useCallback(async (e) => {
     const payload = mainFormRef.current.values;
     const userId = searchParams.get('userId');
 
@@ -84,7 +84,7 @@ const Home = () => {
     }
     mainFormRef.current.resetForm({ values: '' })
     setUpdateMode(false)
-  }
+  }, [])
 
   useEffect(() => {
     (async () => {
